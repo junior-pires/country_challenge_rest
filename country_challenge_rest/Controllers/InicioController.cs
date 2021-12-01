@@ -8,7 +8,12 @@ using RestSharp.Authenticators;
 using country_challenge_rest.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-
+using System.Xml;
+using System.Net.Mime;
+using System.IO;
+using System.Text;
+using CsvHelper;
+using System.Globalization;
 
 namespace country_challenge_rest.Controllers
 {
@@ -101,5 +106,21 @@ namespace country_challenge_rest.Controllers
             
             return View();
         }
+
+        public ActionResult export_xml()
+        {
+            List<Pais> paises = new List<Pais>();
+            var client = new RestClient("https://restcountries.com/v3.1");
+            var request = new RestRequest("all", DataFormat.Json);
+            var response = client.Get(request);
+
+            List<Pais> paises_ = JsonConvert.DeserializeObject<List<Pais>>(response.Content);
+            XmlDocument doc = JsonConvert.DeserializeXmlNode("{'Row':" + response.Content + "}", "root");
+            byte[] bytes = Encoding.Default.GetBytes(doc.OuterXml);
+            var fileStreamResult = File(bytes, "application/octet-stream", "Paises.xml");
+            return fileStreamResult;
+        }
+
+      
     }
 }
