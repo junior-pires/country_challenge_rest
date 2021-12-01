@@ -1,0 +1,521 @@
+﻿
+@{
+    ViewBag.Title = "Detalhes_pais";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/perfil_pais.css" rel="stylesheet" />
+
+
+<style>
+
+</style>
+<div class="container emp-profile">
+    <form method="post">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img src="@ViewBag.pais.Flags.Png" alt="" />
+                    @*<div class="file btn btn-lg btn-primary">
+                        Change Photo
+                        <input type="file" name="file" />
+                    </div>*@
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                    <h2>
+                        @ViewBag.pais.Name.Official
+                    </h2>
+                    <h3>
+                        @ViewBag.pais.Name.Common
+                    </h3>
+                    @*<p class="proile-rating">RANKINGS : <span>8/10</span></p>*@
+                    
+                </div>
+            </div>
+            <div class="col-md-2">
+                <input type="button" onclick="window.history.back();" class="profile-edit-btn" name="btnAddMore" value="Voltar" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+              
+            </div>
+            <div class="col-md-8">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Identificação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Região</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">População/Area</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">Mapa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tabs-5" role="tab">Horario/Tempo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">Traducoes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tabs-7" role="tab">Estado</a>
+                    </li>
+                </ul><!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Nome Official</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p> @ViewBag.pais.Name.Official</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Nome Comum</label>
+                            </div>
+                            <div class="col-md-6">
+                                @ViewBag.pais.Name.Common
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Codigo Cca2</label>
+                            </div>
+                            <div class="col-md-6">
+                                <P>@ViewBag.pais.Cca2</P>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Codigo Cca3</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>@ViewBag.pais.Cca3</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Codigo Ccn3</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>@ViewBag.pais.Ccn3</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="tabs-2" role="tabpanel">
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Continente</label>
+                            </div>
+                            <div class="col-md-6">
+                                @if (ViewBag.pais.Continents != null)
+                                {
+                                <p> @ViewBag.pais.Continents[0]</p>
+                                }
+                                
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Região</label>
+                            </div>
+                            <div class="col-md-6">
+                                @ViewBag.pais.Region
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Subregião</label>
+                            </div>
+                            <div class="col-md-6">
+                                <P>@ViewBag.pais.Subregion</P>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Capital</label>
+                            </div>
+                            <div class="col-md-6">
+                                @if (ViewBag.pais.Capital != null)
+                                {
+                                    <p>@ViewBag.pais.Capital[0]</p>
+                                }
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="tabs-3" role="tabpanel">
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Aréa</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p> @ViewBag.pais.Area</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>População</label>
+                            </div>
+                            <div class="col-md-6">
+                                @ViewBag.pais.Population
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Latitude</label>
+                            </div>
+                            <div class="col-md-6">
+                                <P>@ViewBag.pais.Latlng[0]</P>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Longitude</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>@ViewBag.pais.Latlng[1]</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Fronteiras</label>
+                            </div>
+                            <div class="col-md-6">
+                                @if (ViewBag.pais.Borders != null)
+                                {
+                                    foreach (var item in ViewBag.pais.Borders)
+                                    {
+                                        <text>@item ,</text>
+                                    }
+                                }
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tabs-4" role="tabpanel">
+                        <br />
+                        <div class="row">
+                            <button type="button" class="btn btn-primary" onclick="location.href='@ViewBag.pais.Maps.GoogleMaps'"> Visualizar Mapa</button>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="tabs-5" role="tabpanel">
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Inicio de Semana</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p> @ViewBag.pais.StartOfWeek</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Timezone</label>
+                            </div>
+                            <div class="col-md-6">
+                                @foreach (var item in ViewBag.pais.Timezones)
+                                {
+                                    <text>@item ,</text>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="tabs-6" role="tabpanel">
+                        <br />
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Arabia saudita</label>
+                            </div>
+                            <div class="col-md-9">
+
+                                <text>Official: @ViewBag.pais.Translations.Ara.Official , Comum: @ViewBag.pais.Translations.Ara.Common</text>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Czechia</label>
+                            </div>
+                            <div class="col-md-9">
+
+                                <text>Official: @ViewBag.pais.Translations.Ces.Official , Comum: @ViewBag.pais.Translations.Ces.Common</text>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Cayman Islands</label>
+                            </div>
+                            <div class="col-md-9">
+
+                                <text>Official: @ViewBag.pais.Translations.Cym.Official , Comum: @ViewBag.pais.Translations.Cym.Common</text>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Alemanha</label>
+                            </div>
+                            <div class="col-md-9">
+
+                                <text>Official: @ViewBag.pais.Translations.Deu.Official , Comum: @ViewBag.pais.Translations.Deu.Common</text>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Estónia</label>
+                            </div>
+                            <div class="col-md-9">
+
+                                <text>Official: @ViewBag.pais.Translations.Est.Official , Comum: @ViewBag.pais.Translations.Est.Common</text>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Finlandia</label>
+                            </div>
+                            <div class="col-md-9">
+
+                                <text>Official: @ViewBag.pais.Translations.Fin.Official , Comum: @ViewBag.pais.Translations.Fin.Common</text>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Franca</label>
+                            </div>
+                            <div class="col-md-9">
+
+                                <text>Official: @ViewBag.pais.Translations.Fra.Official , Comum: @ViewBag.pais.Translations.Fra.Common</text>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Croácia</label>
+                            </div>
+                            <div class="col-md-9">
+
+                                <text>Official: @ViewBag.pais.Translations.Hrv.Official , Comum: @ViewBag.pais.Translations.Hrv.Common</text>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Hungria</label>
+                            </div>
+                            <div class="col-md-9">
+
+                                <text>Official: @ViewBag.pais.Translations.Hun.Official , Comum: @ViewBag.pais.Translations.Hun.Common</text>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Italia</label>
+                            </div>
+                            <div class="col-md-9">
+
+                                <text>Official: @ViewBag.pais.Translations.Ita.Official , Comum: @ViewBag.pais.Translations.Ita.Common</text>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Japao</label>
+                            </div>
+                            <div class="col-md-9">
+
+                                <text>Official: @ViewBag.pais.Translations.Jpn.Official , Comum: @ViewBag.pais.Translations.Jpn.Common</text>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Coreia do Sul</label>
+                            </div>
+                            <div class="col-md-9">
+
+                                <text>Official: @ViewBag.pais.Translations.Kor.Official , Comum: @ViewBag.pais.Translations.Kor.Common</text>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Países Baixos</label>
+                            </div>
+                            <div class="col-md-9">
+
+                                <text>Official: @ViewBag.pais.Translations.Nld.Official , Comum: @ViewBag.pais.Translations.Nld.Common</text>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Peru</label>
+                            </div>
+                            <div class="col-md-9">
+
+                                <text>Official: @ViewBag.pais.Translations.Per.Official , Comum: @ViewBag.pais.Translations.Per.Common</text>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Polonia</label>
+                            </div>
+                            <div class="col-md-9">
+
+                                <text>Official: @ViewBag.pais.Translations.Pol.Official , Comum: @ViewBag.pais.Translations.Pol.Common</text>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Portugal</label>
+                            </div>
+                            <div class="col-md-9">
+
+                                <text>Official: @ViewBag.pais.Translations.Por.Official , Comum: @ViewBag.pais.Translations.Por.Common</text>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Russia</label>
+                            </div>
+                            <div class="col-md-9">
+
+                                <text>Official: @ViewBag.pais.Translations.Rus.Official , Comum: @ViewBag.pais.Translations.Rus.Common</text>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Eslováquia</label>
+                            </div>
+                            <div class="col-md-9">
+
+                                <text>Official: @ViewBag.pais.Translations.Slk.Official , Comum: @ViewBag.pais.Translations.Slk.Common</text>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Espanha</label>
+                            </div>
+                            <div class="col-md-9">
+
+                                <text>Official: @ViewBag.pais.Translations.Spa.Official , Comum: @ViewBag.pais.Translations.Spa.Common</text>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Swecia</label>
+                            </div>
+                            <div class="col-md-9">
+
+                                <text>Official: @ViewBag.pais.Translations.Swe.Official , Comum: @ViewBag.pais.Translations.Swe.Common</text>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Nepal</label>
+                            </div>
+                            <div class="col-md-9">
+
+                                <text>Official: @ViewBag.pais.Translations.Urd.Official , Comum: @ViewBag.pais.Translations.Urd.Common</text>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>China</label>
+                            </div>
+                            <div class="col-md-9">
+
+                                <text>Official: @ViewBag.pais.Translations.Zho.Official , Comum: @ViewBag.pais.Translations.Zho.Common</text>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="tabs-7" role="tabpanel">
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Independente</label>
+                            </div>
+                            <div class="col-md-6">
+                                @if (ViewBag.pais.Independent)
+                                {
+                                    <p>SIM</p>
+                                }
+                                else
+                                {
+                                    <p>NAO</p>
+                                }
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Terra Bloqueada</label>
+                            </div>
+                            <div class="col-md-6">
+
+                                @if (ViewBag.pais.Landlocked)
+                                {
+                                    <p>SIM</p>
+                                }
+                                else
+                                {
+                                    <p>NAO</p>
+                                }
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Estado Actual</label>
+                            </div>
+                            <div class="col-md-6">
+
+                                @if (ViewBag.pais.Status== "officially-assigned")
+                                {
+                                <p>Oficialmente designado</p>
+                                }
+                                else
+                                {
+                            <p>Nao designado</p>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Content/jquery-3.5.1.js"></script>
