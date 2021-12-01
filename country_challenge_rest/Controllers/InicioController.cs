@@ -97,28 +97,46 @@ namespace country_challenge_rest.Controllers
 
         public ActionResult Detalhes_pais(string Ccn3)
         {
-            var client = new RestClient("https://restcountries.com/v3.1");
-            var request = new RestRequest("alpha/"+Ccn3, DataFormat.Json);
-            var response = client.Get(request);
+            try
+            {
+                var client = new RestClient("https://restcountries.com/v3.1");
+                var request = new RestRequest("alpha/" + Ccn3, DataFormat.Json);
+                var response = client.Get(request);
 
-            List<Pais> pais = JsonConvert.DeserializeObject<List<Pais>>(response.Content);
-            ViewBag.pais = pais.First();
+                List<Pais> pais = JsonConvert.DeserializeObject<List<Pais>>(response.Content);
+                ViewBag.pais = pais.First();
+            }
+            catch (Exception)
+            {
+
+                return View("Error");
+            }
+            
             
             return View();
         }
 
         public ActionResult export_xml()
         {
-            List<Pais> paises = new List<Pais>();
-            var client = new RestClient("https://restcountries.com/v3.1");
-            var request = new RestRequest("all", DataFormat.Json);
-            var response = client.Get(request);
+            try
+            {
+                List<Pais> paises = new List<Pais>();
+                var client = new RestClient("https://restcountries.com/v3.1");
+                var request = new RestRequest("all", DataFormat.Json);
+                var response = client.Get(request);
 
-            List<Pais> paises_ = JsonConvert.DeserializeObject<List<Pais>>(response.Content);
-            XmlDocument doc = JsonConvert.DeserializeXmlNode("{'Row':" + response.Content + "}", "root");
-            byte[] bytes = Encoding.Default.GetBytes(doc.OuterXml);
-            var fileStreamResult = File(bytes, "application/octet-stream", "Paises.xml");
-            return fileStreamResult;
+                List<Pais> paises_ = JsonConvert.DeserializeObject<List<Pais>>(response.Content);
+                XmlDocument doc = JsonConvert.DeserializeXmlNode("{'Row':" + response.Content + "}", "root");
+                byte[] bytes = Encoding.Default.GetBytes(doc.OuterXml);
+                var fileStreamResult = File(bytes, "application/octet-stream", "Paises.xml");
+                return fileStreamResult;
+            }
+            catch (Exception)
+            {
+
+                return View("Error");
+            }
+            
         }
 
       
